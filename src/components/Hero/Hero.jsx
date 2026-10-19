@@ -1,26 +1,30 @@
-import "./Hero.css";
+import s from "./Hero.module.css";
+import succulent from "../../assets/b1.png";
+import cactuses from "../../assets/b2.png";
+import greenPlants from "../../assets/b3.png";
 
 const plants = [
   {
-    src: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=1200&q=85",
+    src: succulent,
     alt: "Суккулент в горшке",
-    className: "hero-photo hero-photo-main",
+    className: `${s["hero-photo"]} ${s["hero-photo-main"]}`,
   },
   {
-    src: "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=600&q=85",
+    src: cactuses,
     alt: "Кактусы",
-    className: "hero-photo hero-photo-small",
+    className: `${s["hero-photo"]} ${s["hero-photo-small"]}`,
   },
   {
-    src: "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=600&q=85",
+    src: greenPlants,
     alt: "Зелёные комнатные растения",
-    className: "hero-photo hero-photo-small",
+    className: `${s["hero-photo"]} ${s["hero-photo-small"]}`,
   },
 ];
 
-export default function Hero() {
-  return (<section className="hero" id="home">
-      <div className="hero-content">
+export function Hero() {
+  return (
+    <section className={s.hero} id="home">
+      <div className={s["hero-content"]}>
         <h1>
           Растения, которые
           <br />
@@ -29,17 +33,16 @@ export default function Hero() {
           дом живым
         </h1>
 
-        <p className="hero-description">
-          Найдите своего зелёного соседа — мы поможем
-          выбрать и позаботиться о нём.
+        <p className={s["hero-description"]}>
+          Найдите своего зелёного соседа — мы поможем выбрать и позаботиться о нём.
         </p>
 
-        <a className="hero-button" href="#catalog">
+        <a className={s["hero-button"]} href="#catalog">
           Перейти в каталог
         </a>
       </div>
 
-      <div className="hero-gallery" id="catalog">
+      <div className={s["hero-gallery"]} id="catalog">
         {plants.map((plant) => (
           <img
             key={plant.src}

@@ -1,24 +1,10 @@
-import { useState } from "react";
-import "./Newsletter.css";
+import s from "./Newsletter.module.css";
 
-export default function Newsletter() {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    if (!email.trim()) return;
-
-    setMessage("Спасибо за подписку!");
-    setEmail("");
-  }
-
+export function Newsletter() {
   return (
-    <section className="newsletter" id="newsletter">
-      <div className="newsletter-content">
+    <section className={s.newsletter} id="newsletter">
+      <div className={s["newsletter-content"]}>
         <h2>Подпишитесь на рассылку</h2>
-
         <p>
           Советы по уходу и новые растения.
           <br />
@@ -26,34 +12,21 @@ export default function Newsletter() {
         </p>
       </div>
 
-      <form
-        className="newsletter-form"
-        onSubmit={handleSubmit}
-      >
-        <div className="newsletter-controls">
+      <form className={s["newsletter-form"]}>
+        <div className={s["newsletter-controls"]}>
           <input
             type="email"
+            name="email"
             placeholder="Ваш email"
             aria-label="Ваш email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
             required
           />
-
-          <button type="submit">
-            Подписаться
-          </button>
+          <button type="submit">Подписаться</button>
         </div>
 
         <small>
           Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.
         </small>
-
-        {message && (
-          <p className="newsletter-success" role="status">
-            {message}
-          </p>
-        )}
       </form>
     </section>
   );
